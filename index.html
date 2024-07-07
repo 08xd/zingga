@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>متجر الزنج الأرخص</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
+
+  body {
+    font-family: 'Amiri', serif;
+    background-color: #000;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .container {
+    width: 80%;
+    max-width: 800px;
+    background-color: #222;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: scroll;
+    height: 90vh;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #b76e79; /* لون بني */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* ظل النص */
+  }
+
+  .subtitle {
+    font-size: 18px;
+    color: #fff;
+  }
+
+  .products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .product {
+    background-color: #333;
+    padding: 20px;
+    margin: 10px;
+    width: calc(33.33% - 20px);
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .product img {
+    width: 100%;
+    max-height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  .product-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    margin: 10px 0;
+  }
+
+  .product-price {
+    font-size: 14px;
+    color: #00ff00; /* لون الأخضر */
+    font-weight: bold;
+  }
+
+  .buy-button {
+    background-color: #b76e79; /* لون بني داكن */
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+  }
+
+  .buy-button:hover {
+    background-color: #8c3d4f; /* تغيير لون الخلفية عند التحويم */
+  }
+
+  .alert {
+    display: none;
+    background-color: red;
+    color: white;
+    padding: 10px;
+    margin-top: 10px;
+    text-align: center;
+    border-radius: 5px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div>
+      <div class="title">متجر الزنج الأرخص</div>
+      <div class="subtitle">لسنا الوحيدون ولكننا الأفضل 🔥</div>
+    </div>
+    <div>
+      <button class="buy-zing-button" onclick="showProducts()">شراء زنج</button>
+      <div>تحت الصيانة</div>
+    </div>
+  </div>
+
+  <div class="products" id="products">
+    <!-- هنا يتم عرض المنتجات -->
+    <div class="product">
+      <img src="https://i.ibb.co/98VzXWK/product-2.jpg" alt="منتج 1">
+      <div class="product-title">الدنكلي</div>
+      <div class="product-price">السعر: $10,90</div>
+      <button onclick="showAlert(0)" class="buy-button">اشتر الآن</button>
+      <div class="alert" id="alert0">لا تشتري العبد إلا والعصا معه</div>
+    </div>
+
+    <div class="product">
+      <img src="https://i.ibb.co/XjbNSp7/product-1.jpg" alt="منتج 2">
+      <div class="product-title">ابو طرشمان</div>
+      <div class="product-price">السعر: $16,50</div>
+      <button onclick="showAlert(1)" class="buy-button">اشتر الآن</button>
+      <div class="alert" id="alert1">لا تشتري العبد إلا والعصا معه</div>
+    </div>
+
+    <div class="product">
+      <img src="https://i.ibb.co/zG2YpBF/product3.jpg" alt="منتج 3">
+      <div class="product-title">الخازوق</div>
+      <div class="product-price">السعر: $33</div>
+      <button onclick="showAlert(2)" class="buy-button">اشتر الآن</button>
+      <div class="alert" id="alert2">لا تشتري العبد إلا والعصا معه</div>
+    </div>
+
+    <div class="product">
+      <img src="https://i.ibb.co/HC4FV76/product4.jpg" alt="منتج 4">
+      <div class="product-title">زنجيقا</div>
+      <div class="product-price">السعر: $18,75</div>
+      <button onclick="showAlert(3)" class="buy-button">اشتر الآن</button>
+      <div class="alert" id="alert3">لا تشتري العبد إلا والعصا معه</div>
+    </div>
+
+    <div class="product">
+      <img src="https://i.ibb.co/Srqfby1/product5.jpg" alt="منتج 5">
+      <div class="product-title">زبليلي</div>
+      <div class="product-price">السعر: $2,90</div>
+      <button onclick="showAlert(4)" class="buy-button">اشتر الآن</button>
+      <div class="alert" id="alert4">لا تشتري العبد إلا والعصا معه</div>
+    </div>
+
+    <div class="product">
+      <img src="https://i.ibb.co/mR6SPqk/product6.jpg" alt="منتج 6">
+      <div class="product-title">كعبول</div>
+      <div class="product-price">السعر: $21,99</div>
+      <button onclick="showAlert(5)" class="buy-button">اشتر الآن</button>
+      <div class="alert" id="alert5">لا تشتري العبد إلا والعصا معه</div>
+    </div>
+
+    <div class="product">
+      <img src="https://i.ibb.co/yRpnYp2/product7.jpg" alt="منتج 7">
+      <div class="product-title">ورياليلي</div>
+      <div class="product-price">السعر: $15,45</div>
+      <button onclick="showAlert(6)" class="buy-button">اشتر الآن</button>
+      <div class="alert" id="alert6">لا تشتري العبد إلا والعصا معه</div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function showProducts() {
+    document.getElementById('products').style.display = 'flex';
+    document.querySelector('.header').style.justifyContent = 'center';
+    document.querySelector('.header').innerHTML = '<h1>قائمة المنتجات</h1>';
+  }
+
+  function showAlert(index) {
+    var alerts = document.querySelectorAll('.alert');
+    alerts.forEach(alert => alert.style.display = 'none');
+    alerts[index].style.display = 'block';
+  }
+</script>
+</body>
+</html>
