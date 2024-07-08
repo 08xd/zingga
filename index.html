@@ -1,157 +1,156 @@
 <!DOCTYPE html>
 <html lang="ar">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title >متجر الزنج الأرخص - الصفحة الرئيسية</title>
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
-    
-      body {
-  font-family: 'Amiri', serif;
-  background-color: #720000; /* لون خلفية افتراضي */
-  color: #fff;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  animation: rainbowBackground 7s infinite; /* تعيين الرسم المتحرك */
-}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>متجر الزنج الأرخص - الصفحة الرئيسية</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
 
-.container {
-  width: 100%;
-  max-width: 1200px;
-  background-color: #f50202; /* لون خلفية افتراضي */
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  overflow-y: auto;
-  animation: rainbowBackground 7s infinite; /* تعيين الرسم المتحرك */
-}
+    body {
+      font-family: 'Amiri', serif;
+      background-color: #720000; /* لون خلفية افتراضي */
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      animation: rainbowBackground 7s infinite; /* تعيين الرسم المتحرك */
+    }
 
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      background-color: #f50202; /* لون خلفية افتراضي */
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      overflow-y: auto;
+      animation: rainbowBackground 7s infinite; /* تعيين الرسم المتحرك */
+    }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
 
-.title {
-  font-size: 24px;
-  font-weight: bold;
-  color: #b76e79;
-  text-shadow: 2px 2px 4px rgba(255, 0, 0, 0.5);
-}
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #b76e79;
+      text-shadow: 2px 2px 4px rgba(255, 0, 0, 0.5);
+    }
 
-.subtitle {
-  font-size: 18px;
-  color: #fff;
-}
+    .subtitle {
+      font-size: 18px;
+      color: #fff;
+    }
 
-.products {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
 
-.product {
-  background-color: #333;
-  padding: 20px;
-  margin: 10px;
-  width: calc(33.33% - 40px);
-  text-align: center;
-  border-radius: 10px;
-  box-shadow: 0 0 8px rgba(255, 251, 251, 0.3);
-}
+    .product {
+      background-color: #333;
+      padding: 20px;
+      margin: 10px;
+      width: calc(33.33% - 40px);
+      text-align: center;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(255, 251, 251, 0.3);
+    }
 
-@keyframes rainbowBackground {
-  0% { background-color: red; }
-  14.28% { background-color: orange; }
-  28.57% { background-color: yellow; }
-  42.85% { background-color: green; }
-  57.14% { background-color: blue; }
-  71.42% { background-color: indigo; }
-  85.71% { background-color: violet; }
-  100% { background-color: red; }
-}
+    .product img {
+      width: 80%;
+      max-height: 300px;
+      object-fit: contain; /* تأكد من عرض الصورة بشكل كامل */
+      border-radius: 10px;
+    }
 
-      .product img {
-        width: 80%;
-        max-height: 300px;
-        object-fit: bold;
-        border-radius: 10px;
+    .product-title {
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+      margin: 10px 0;
+    }
+
+    .product-description {
+      font-size: 14px;
+      color: #ccc;
+      margin-bottom: 10px;
+    }
+
+    .product-price {
+      font-size: 14px;
+      color: #00ff00;
+      font-weight: bold;
+    }
+
+    .add-to-cart-button {
+      background-color: #b76e79;
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    .add-to-cart-button:hover {
+      background-color: #8c3d4f;
+    }
+
+    .cart-icon {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .cart-icon::after {
+      content: attr(data-count);
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background: red;
+      color: white;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 20px;
+    }
+
+    @keyframes rainbowBackground {
+      0% { background-color: red; }
+      14.28% { background-color: orange; }
+      28.57% { background-color: yellow; }
+      42.85% { background-color: green; }
+      57.14% { background-color: blue; }
+      71.42% { background-color: indigo; }
+      85.71% { background-color: violet; }
+      100% { background-color: red; }
+    }
+
+    @media (max-width: 768px) {
+      .product {
+        width: calc(50% - 40px);
       }
-    
-      .product-title {
-        font-size: 16px;
-        font-weight: bold;
-        color: #fff;
-        margin: 10px 0;
+    }
+
+    @media (max-width: 480px) {
+      .product {
+        width: calc(100% - 40px);
       }
-    
-      .product-description {
-        font-size: 14px;
-        color: #ccc;
-        margin-bottom: 10px;
-      }
-    
-      .product-price {
-        font-size: 14px;
-        color: #00ff00;
-        font-weight: bold;
-      }
-    
-      .add-to-cart-button {
-        background-color: #b76e79;
-        color: #fff;
-        border: none;
-        padding: 8px 16px;
-        border-radius: 5px;
-        cursor: pointer;
-        margin-top: 10px;
-        transition: background-color 0.3s ease;
-      }
-    
-      .add-to-cart-button:hover {
-        background-color: #8c3d4f;
-      }
-    
-      .cart-icon {
-        position: relative;
-        cursor: pointer;
-      }
-    
-      .cart-icon::after {
-        content: attr(data-count);
-        position: absolute;
-        top: -10px;
-        right: -10px;
-        background: red;
-        color: white;
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        text-align: center;
-        line-height: 20px;
-      }
-    
-      @media (max-width: 768px) {
-        .product {
-          width: calc(50% - 40px);
-        }
-      }
-    
-      @media (max-width: 480px) {
-        .product {
-          width: calc(100% - 40px);
-        }
-      }
-    </style>
-    </head>
-    
+    }
+  </style>
+</head>
+
 <body>
 <div class="container">
   <div class="header">
@@ -227,29 +226,25 @@
       <div class="product-title">الخورمم</div>
       <div class="product-description">من الاسم تعرف</div>
       <div class="product-price">السعر: $3.90</div>
-      <button class="add-to-cart-button" onclick="addToCart('الخورمم ', 3.90)">أضف إلى السلة</button>
+      <button class="add-to-cart-button" onclick="addToCart('الخورمم', 3.90)">أضف إلى السلة</button>
     </div>
 
     <div class="product">
       <img src="https://i.ibb.co/SX8qTM0/product9.jpg" alt="منتج 9">
       <div class="product-title">بنيري</div>
-      <div class="product-description">لايغرك لونه تراه اسود </div>
+      <div class="product-description">لايغرك لونه تراه اسود</div>
       <div class="product-price">السعر: $5</div>
       <button class="add-to-cart-button" onclick="addToCart('بنيري', 5)">أضف إلى السلة</button>
     </div>
 
     <div class="product">
-      <img src="https://i.ibb.co/CB8tK2r/product10.jpg" alt="منتج 10" 
+      <img src="https://i.ibb.co/CB8tK2r/product10.jpg" alt="منتج 10">
       <div class="product-title">كاجمغلي</div>
       <div class="product-description">لا انصح بالشراء</div>
       <div class="product-price">السعر: $1</div>
-      <button class="add-to-cart-button" onclick="addToCart('كاجمغلي', )">أضف إلى السلة</button>
+      <button class="add-to-cart-button" onclick="addToCart('كاجمغلي', 1)">أضف إلى السلة</button>
     </div>
-    
-    
-    
     <!-- نهاية المنتجات الجديدة -->
-
   </div>
 </div>
 
@@ -278,5 +273,6 @@
 
   document.addEventListener('DOMContentLoaded', loadCart);
 </script>
+
 </body>
 </html>
