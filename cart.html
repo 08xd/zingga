@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>صفحة السلة</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
+
+  body {
+    font-family: 'Amiri', serif;
+    background-color: #000;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    background-color: #222;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #b76e79;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .subtitle {
+    font-size: 18px;
+    color: #fff;
+  }
+
+  .cart-items {
+    margin-top: 20px;
+  }
+
+  .cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #555;
+  }
+
+  .item-name {
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+  }
+
+  .item-price {
+    font-size: 14px;
+    color: #00ff00;
+    font-weight: bold;
+  }
+
+  .total {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+  }
+
+  .confirm-order-btn {
+    background-color: #b76e79;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+  }
+
+  .confirm-order-btn:hover {
+    background-color: #8c3d4f;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div>
+      <div class="title">صفحة السلة</div>
+      <div class="subtitle">عرض المنتجات المضافة إلى السلة وتأكيد الطلب</div>
+    </div>
+    <div>
+      <a href="index.html" class="cart-icon" data-count="0">العودة إلى المتجر</a>
+    </div>
+  </div>
+
+  <div class="cart-items" id="cart-items">
+    <!-- هنا سيتم إضافة العناصر من السكربت -->
+  </div>
+
+  <div class="total" id="total">
+    الإجمالي: $0.00
+  </div>
+
+  <button class="confirm-order-btn" onclick="confirmOrder()">تأكيد الطلب</button>
+</div>
+
+<script>
+  let cart = [];
+
+  function loadCart() {
+    const savedCart = JSON.parse(localStorage.getItem('cart'));
+    if (savedCart) {
+      cart = savedCart;
+      displayCartItems();
+    }
+  }
+
+  function displayCartItems() {
+    const cartItemsContainer = document.getElementById('cart-items');
+    cartItemsContainer.innerHTML = '';
+
+    let totalPrice = 0;
+
+    cart.forEach(item => {
+      const cartItemElement = document.createElement('div');
+      cartItemElement.classList.add('cart-item');
+
+      const itemName = document.createElement('div');
+      itemName.classList.add('item-name');
+      itemName.textContent = item.name;
+      cartItemElement.appendChild(itemName);
+
+      const itemPrice = document.createElement('div');
+      itemPrice.classList.add('item-price');
+      itemPrice.textContent = `$${item.price.toFixed(2)}`;
+      cartItemElement.appendChild(itemPrice);
+
+      cartItemsContainer.appendChild(cartItemElement);
+
+      totalPrice += item.price;
+    });
+
+    const totalElement = document.getElementById('total');
+    totalElement.textContent = `الإجمالي: $${totalPrice.toFixed(2)}`;
+  }
+
+  function confirmOrder() {
+    const totalPrice = cart.reduce((total, item) => total + item.price, 0);
+
+    // Replace with your PayPal checkout link
+    const paypalLink = `https://www.paypal.com/paypalme/Mohammedsade?v=1&utm_source=unp&utm_medium=email&utm_campaign=RT000481&utm_unptid=d59827fe-3c6b-11ef-a15c-3cfdfeef78f5&ppid=RT000481&cnac=BH&rsta=ar_EG%28ar-BH%29&cust=J325GEXX8KX6Y&unptid=d59827fe-3c6b-11ef-a15c-3cfdfeef78f5&calc=46449369ce865&unp_tpcid=ppme-social-business-profile-created&page=main%3Aemail%3ART000481&pgrp=main%3Aemail&e=cl&mchn=em&s=ci&mail=sys&appVersion=1.263`;
+
+    // Redirect to PayPal with total amount
+    window.location.href = `${paypalLink}&total=${totalPrice.toFixed(2)}`;
+  }
+
+  document.addEventListener('DOMContentLoaded', loadCart);
+</script>
+</body>
+</html>

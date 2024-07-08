@@ -16,18 +16,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
   }
 
   .container {
-    width: 80%;
-    max-width: 800px;
+    width: 100%;
+    max-width: 1200px;
     background-color: #222;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    overflow-y: scroll;
-    height: 90vh;
+    overflow-y: auto;
   }
 
   .header {
@@ -40,8 +39,8 @@
   .title {
     font-size: 24px;
     font-weight: bold;
-    color: #b76e79; /* لون بني */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* ظل النص */
+    color: #b76e79;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   }
 
   .subtitle {
@@ -59,7 +58,7 @@
     background-color: #333;
     padding: 20px;
     margin: 10px;
-    width: calc(33.33% - 20px);
+    width: calc(33.33% - 40px);
     text-align: center;
     border-radius: 10px;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
@@ -81,12 +80,12 @@
 
   .product-price {
     font-size: 14px;
-    color: #00ff00; /* لون الأخضر */
+    color: #00ff00;
     font-weight: bold;
   }
 
-  .buy-button {
-    background-color: #b76e79; /* لون بني داكن */
+  .add-to-cart-button {
+    background-color: #b76e79;
     color: #fff;
     border: none;
     padding: 8px 16px;
@@ -96,18 +95,39 @@
     transition: background-color 0.3s ease;
   }
 
-  .buy-button:hover {
-    background-color: #8c3d4f; /* تغيير لون الخلفية عند التحويم */
+  .add-to-cart-button:hover {
+    background-color: #8c3d4f;
   }
 
-  .alert {
-    display: none;
-    background-color: red;
+  .cart-icon {
+    position: relative;
+    cursor: pointer;
+  }
+
+  .cart-icon::after {
+    content: attr(data-count);
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: red;
     color: white;
-    padding: 10px;
-    margin-top: 10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
     text-align: center;
-    border-radius: 5px;
+    line-height: 20px;
+  }
+
+  @media (max-width: 768px) {
+    .product {
+      width: calc(50% - 40px);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .product {
+      width: calc(100% - 40px);
+    }
   }
 </style>
 </head>
@@ -119,85 +139,85 @@
       <div class="subtitle">لسنا الوحيدون ولكننا الأفضل 🔥</div>
     </div>
     <div>
-      <button class="buy-zing-button" onclick="showProducts()">شراء زنج</button>
-      <div>تحت الصيانة</div>
+      <a href="cart.html" class="cart-icon" data-count="0">🛒</a>
     </div>
   </div>
 
   <div class="products" id="products">
-    <!-- هنا يتم عرض المنتجات -->
     <div class="product">
       <img src="https://i.ibb.co/98VzXWK/product-2.jpg" alt="منتج 1">
       <div class="product-title">الدنكلي</div>
       <div class="product-price">السعر: $10,90</div>
-      <button onclick="location.href='https://www.paypal.com/paypalme/Mohammedsade?v=1&utm_source=unp&utm_medium=email&utm_campaign=RT000481&utm_unptid=d59827fe-3c6b-11ef-a15c-3cfdfeef78f5&ppid=RT000481&cnac=BH&rsta=ar_EG%28ar-BH%29&cust=J325GEXX8KX6Y&unptid=d59827fe-3c6b-11ef-a15c-3cfdfeef78f5&calc=46449369ce865&unp_tpcid=ppme-social-business-profile-created&page=main%3Aemail%3ART000481&pgrp=main%3Aemail&e=cl&mchn=em&s=ci&mail=sys&appVersion=1.263.0&tenant_name=PAYPAL&xt=145585%2C104038%2C127632&link_ref=paypalme_mohammedsade'" class="buy-button">اشتر الآن</button>
-      <div class="alert" id="alert0">لا تشتري العبد إلا والعصا معه</div>
+      <button class="add-to-cart-button" onclick="addToCart('الدنكلي', 10.90)">أضف إلى السلة</button>
     </div>
 
     <div class="product">
       <img src="https://i.ibb.co/XjbNSp7/product-1.jpg" alt="منتج 2">
       <div class="product-title">ابو طرشمان</div>
       <div class="product-price">السعر: $16,50</div>
-      <button onclick="location.href='https://www.paypal.com/paypalme/Mohammedsade?v=1&utm_source=unp&utm_medium=email&utm_campaign=RT000481&utm_unptid=d59827fe-3c6b-11ef-a15c-3cfdfeef78f5&ppid=RT000481&cnac=BH&rsta=ar_EG%28ar-BH%29&cust=J325GEXX8KX6Y&unptid=d59827fe-3c6b-11ef-a15c-3cfdfeef78f5&calc=46449369ce865&unp_tpcid=ppme-social-business-profile-created&page=main%3Aemail%3ART000481&pgrp=main%3Aemail&e=cl&mchn=em&s=ci&mail=sys&appVersion=1.263.0&tenant_name=PAYPAL&xt=145585%2C104038%2C127632&link_ref=paypalme_mohammedsade'" class="buy-button">اشتر الآن</button>
-      <div class="alert" id="alert1">لا تشتري العبد إلا والعصا معه</div>
+      <button class="add-to-cart-button" onclick="addToCart('ابو طرشمان', 16.50)">أضف إلى السلة</button>
     </div>
 
     <div class="product">
       <img src="https://i.ibb.co/zG2YpBF/product3.jpg" alt="منتج 3">
       <div class="product-title">الخازوق</div>
       <div class="product-price">السعر: $33</div>
-      <button onclick="location.href='https://www.paypal.com/paypalme/Mohammedsade?v=1&utm_source=unp&utm_medium=email&utm_campaign=RT000481&utm_unptid=d59827fe-3c6b-11ef-a15c-3cfdfeef78f5&ppid=RT000481&cnac=BH&rsta=ar_EG%28ar-BH%29&cust=J325GEXX8KX6Y&unptid=d59827fe-3c6b-11ef-a15c-3cfdfeef78f5&calc=46449369ce865&unp_tpcid=ppme-social-business-profile-created&page=main%3Aemail%3ART000481&pgrp=main%3Aemail&e=cl&mchn=em&s=ci&mail=sys&appVersion=1.263.0&tenant_name=PAYPAL&xt=145585%2C104038%2C127632&link_ref=paypalme_mohammedsade'" class="buy-button">اشتر الآن</button>
-      <div class="alert" id="alert2">لا تشتري العبد إلا والعصا معه</div>
+      <button class="add-to-cart-button" onclick="addToCart('الخازوق', 33.00)">أضف إلى السلة</button>
     </div>
 
     <div class="product">
       <img src="https://i.ibb.co/HC4FV76/product4.jpg" alt="منتج 4">
       <div class="product-title">زنجيقا</div>
       <div class="product-price">السعر: $18,75</div>
-      <button onclick="location.href='https://www.paypal.com/paypalme/Mohammedsade?v=1&utm_source=unp&utm_medium=email&utm_campaign=RT000481&utm_unptid=d59827fe-3c6b-11ef-a15c-3cfdfeef78f5&ppid=RT000481&cnac=BH&rsta=ar_EG%28ar-BH%29&cust=J325GEXX8KX6Y&unptid=d59827fe-3c6b-11ef-a15c-3cfdfeef78f5&calc=46449369ce865&unp_tpcid=ppme-social-business-profile-created&page=main%3Aemail%3ART000481&pgrp=main%3Aemail&e=cl&mchn=em&s=ci&mail=sys&appVersion=1.263.0&tenant_name=PAYPAL&xt=145585%2C104038%2C127632&link_ref=paypalme_mohammedsade'" class="buy-button">اشتر الآن</button>
-      <div class="alert" id="alert3">لا تشتري العبد إلا والعصا معه</div>
+      <button class="add-to-cart-button" onclick="addToCart('زنجيقا', 18.75)">أضف إلى السلة</button>
     </div>
 
     <div class="product">
       <img src="https://i.ibb.co/Srqfby1/product5.jpg" alt="منتج 5">
       <div class="product-title">زبليلي</div>
       <div class="product-price">السعر: $2,90</div>
-      <button onclick="location.href='https://www.paypal.com/paypalme/Mohammedsade?v=1&utm_source=unp&utm_medium=email&utm_campaign=RT000481&utm_unptid=d59827fe-3c6b-11ef-a15c-3cfdfeef78f5&ppid=RT000481&cnac=BH&rsta=ar_EG%28ar-BH%29&cust=J325GEXX8KX6Y&unptid=d59827fe-3c6b-11ef-a15c-3cfdfeef78f5&calc=46449369ce865&unp_tpcid=ppme-social-business-profile-created&page=main%3Aemail%3ART000481&pgrp=main%3Aemail&e=cl&mchn=em&s=ci&mail=sys&appVersion=1.263.0&tenant_name=PAYPAL&xt=145585%2C104038%2C127632&link_ref=paypalme_mohammedsade'" class="buy-button">اشتر الآن</button>
-      <div class="alert" id="alert4">لا تشتري العبد إلا والعصا معه</div>
+      <button class="add-to-cart-button" onclick="addToCart('زبليلي', 2.90)">أضف إلى السلة</button>
     </div>
 
     <div class="product">
       <img src="https://i.ibb.co/mR6SPqk/product6.jpg" alt="منتج 6">
       <div class="product-title">كعبول</div>
       <div class="product-price">السعر: $21,99</div>
-      <button onclick="location.href='https://www.paypal.com/paypalme/Mohammedsade?v=1&utm_source=unp&utm_medium=email&utm_campaign=RT000481&utm_unptid=d59827fe-3c6b-11ef-a15c-3cfdfeef78f5&ppid=RT000481&cnac=BH&rsta=ar_EG%28ar-BH%29&cust=J325GEXX8KX6Y&unptid=d59827fe-3c6b-11ef-a15c-3cfdfeef78f5&calc=46449369ce865&unp_tpcid=ppme-social-business-profile-created&page=main%3Aemail%3ART000481&pgrp=main%3Aemail&e=cl&mchn=em&s=ci&mail=sys&appVersion=1.263.0&tenant_name=PAYPAL&xt=145585%2C104038%2C127632&link_ref=paypalme_mohammedsade'" class="buy-button">اشتر الآن</button>
-      <div class="alert" id="alert5">لا تشتري العبد إلا والعصا معه</div>
+      <button class="add-to-cart-button" onclick="addToCart('كعبول', 21.99)">أضف إلى السلة</button>
     </div>
 
     <div class="product">
       <img src="https://i.ibb.co/yRpnYp2/product7.jpg" alt="منتج 7">
       <div class="product-title">ورياليلي</div>
       <div class="product-price">السعر: $15,45</div>
-      <button onclick="location.href='https://www.paypal.com/paypalme/Mohammedsade?v=1&utm_source=unp&utm_medium=email&utm_campaign=RT000481&utm_unptid=d59827fe-3c6b-11ef-a15c-3cfdfeef78f5&ppid=RT000481&cnac=BH&rsta=ar_EG%28ar-BH%29&cust=J325GEXX8KX6Y&unptid=d59827fe-3c6b-11ef-a15c-3cfdfeef78f5&calc=46449369ce865&unp_tpcid=ppme-social-business-profile-created&page=main%3Aemail%3ART000481&pgrp=main%3Aemail&e=cl&mchn=em&s=ci&mail=sys&appVersion=1.263.0&tenant_name=PAYPAL&xt=145585%2C104038%2C127632&link_ref=paypalme_mohammedsade'" class="buy-button">اشتر الآن</button>
-      <div class="alert" id="alert6">لا تشتري العبد إلا والعصا معه</div>
+      <button class="add-to-cart-button" onclick="addToCart('ورياليلي', 15.45)">أضف إلى السلة</button>
     </div>
   </div>
-
 </div>
 
 <script>
-  function showProducts() {
-    document.getElementById('products').style.display = 'flex';
-    document.querySelector('.header').style.justifyContent = 'center';
-    document.querySelector('.header').innerHTML = '<h1>قائمة المنتجات</h1>';
+  let cart = [];
+
+  function addToCart(productName, productPrice) {
+    cart.push({ name: productName, price: productPrice });
+    updateCartIcon();
+    localStorage.setItem('cart', JSON.stringify(cart));
   }
 
-  function showAlert(index) {
-    var alerts = document.querySelectorAll('.alert');
-    alerts.forEach(alert => alert.style.display = 'none');
-    alerts[index].style.display = 'block';
+  function updateCartIcon() {
+    const cartIcon = document.querySelector('.cart-icon');
+    cartIcon.setAttribute('data-count', cart.length);
   }
+
+  function loadCart() {
+    const savedCart = JSON.parse(localStorage.getItem('cart'));
+    if (savedCart) {
+      cart = savedCart;
+      updateCartIcon();
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', loadCart);
 </script>
 </body>
 </html>
-```
