@@ -93,6 +93,21 @@
   .confirm-order-btn:hover {
     background-color: #8c3d4f;
   }
+
+  .cancel-item-btn {
+    background-color: #f44336;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 10px;
+  }
+
+  .cancel-item-btn:hover {
+    background-color: #d32f2f;
+  }
 </style>
 </head>
 <body>
@@ -135,7 +150,7 @@
 
     let totalPrice = 0;
 
-    cart.forEach(item => {
+    cart.forEach((item, index) => {
       const cartItemElement = document.createElement('div');
       cartItemElement.classList.add('cart-item');
 
@@ -149,6 +164,14 @@
       itemPrice.textContent = `$${item.price.toFixed(2)}`;
       cartItemElement.appendChild(itemPrice);
 
+      const cancelBtn = document.createElement('button');
+      cancelBtn.classList.add('cancel-item-btn');
+      cancelBtn.textContent = 'إلغاء العبد؟';
+      cancelBtn.onclick = function() {
+        cancelItem(index);
+      };
+      cartItemElement.appendChild(cancelBtn);
+
       cartItemsContainer.appendChild(cartItemElement);
 
       totalPrice += item.price;
@@ -156,6 +179,12 @@
 
     const totalElement = document.getElementById('total');
     totalElement.textContent = `الإجمالي: $${totalPrice.toFixed(2)}`;
+  }
+
+  function cancelItem(index) {
+    cart.splice(index, 1);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    displayCartItems();
   }
 
   function confirmOrder() {
@@ -172,6 +201,7 @@
 </script>
 </body>
 </html>
+ 
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -319,50 +349,50 @@
     <div class="product">
       <img src="https://i.ibb.co/98VzXWK/product-2.jpg" alt="منتج 1">
       <div class="product-title">الدنكلي</div>
-      <div class="product-price">السعر: $10,90</div>
-      <button class="add-to-cart-button" onclick="addToCart('الدنكلي', 10.90)">أضف إلى السلة</button>
+      <div class="product-price">السعر: $7,90</div>
+      <button class="add-to-cart-button" onclick="addToCart('الدنكلي', 7.90)">أضف إلى السلة</button>
     </div>
 
     <div class="product">
       <img src="https://i.ibb.co/XjbNSp7/product-1.jpg" alt="منتج 2">
       <div class="product-title">ابو طرشمان</div>
-      <div class="product-price">السعر: $16,50</div>
-      <button class="add-to-cart-button" onclick="addToCart('ابو طرشمان', 16.50)">أضف إلى السلة</button>
+      <div class="product-price">السعر: $4,50</div>
+      <button class="add-to-cart-button" onclick="addToCart('ابو طرشمان', 4.50)">أضف إلى السلة</button>
     </div>
 
     <div class="product">
       <img src="https://i.ibb.co/zG2YpBF/product3.jpg" alt="منتج 3">
       <div class="product-title">الخازوق</div>
-      <div class="product-price">السعر: $33</div>
-      <button class="add-to-cart-button" onclick="addToCart('الخازوق', 33.00)">أضف إلى السلة</button>
+      <div class="product-price">السعر: $6</div>
+      <button class="add-to-cart-button" onclick="addToCart('الخازوق', 6.00)">أضف إلى السلة</button>
     </div>
 
     <div class="product">
       <img src="https://i.ibb.co/HC4FV76/product4.jpg" alt="منتج 4">
       <div class="product-title">زنجيقا</div>
-      <div class="product-price">السعر: $18,75</div>
-      <button class="add-to-cart-button" onclick="addToCart('زنجيقا', 18.75)">أضف إلى السلة</button>
+      <div class="product-price">السعر: $3,75</div>
+      <button class="add-to-cart-button" onclick="addToCart('زنجيقا', 3.75)">أضف إلى السلة</button>
     </div>
 
     <div class="product">
       <img src="https://i.ibb.co/Srqfby1/product5.jpg" alt="منتج 5">
-      <div class="product-title">زبليلي</div>
+      <div class="product-title">البولبول</div>
       <div class="product-price">السعر: $2,90</div>
-      <button class="add-to-cart-button" onclick="addToCart('زبليلي', 2.90)">أضف إلى السلة</button>
+      <button class="add-to-cart-button" onclick="addToCart('البولبول', 2.90)">أضف إلى السلة</button>
     </div>
 
     <div class="product">
       <img src="https://i.ibb.co/mR6SPqk/product6.jpg" alt="منتج 6">
       <div class="product-title">كعبول</div>
-      <div class="product-price">السعر: $21,99</div>
-      <button class="add-to-cart-button" onclick="addToCart('كعبول', 21.99)">أضف إلى السلة</button>
+      <div class="product-price">السعر: $6,99</div>
+      <button class="add-to-cart-button" onclick="addToCart('كعبول', 6.99)">أضف إلى السلة</button>
     </div>
 
     <div class="product">
       <img src="https://i.ibb.co/yRpnYp2/product7.jpg" alt="منتج 7">
       <div class="product-title">ورياليلي</div>
-      <div class="product-price">السعر: $15,45</div>
-      <button class="add-to-cart-button" onclick="addToCart('ورياليلي', 15.45)">أضف إلى السلة</button>
+      <div class="product-price">السعر: $3,45</div>
+      <button class="add-to-cart-button" onclick="addToCart('ورياليلي', 3.45)">أضف إلى السلة</button>
     </div>
   </div>
 </div>
