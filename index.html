@@ -1,137 +1,157 @@
-
 <!DOCTYPE html>
 <html lang="ar">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>متجر الزنج الأرخص - الصفحة الرئيسية</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title >متجر الزنج الأرخص - الصفحة الرئيسية</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
+    
+      body {
+  font-family: 'Amiri', serif;
+  background-color: #720000; /* لون خلفية افتراضي */
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  animation: rainbowBackground 7s infinite; /* تعيين الرسم المتحرك */
+}
 
-  body {
-    font-family: 'Amiri', serif;
-    background-color: #000;
-    color: #fff;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-  }
+.container {
+  width: 100%;
+  max-width: 1200px;
+  background-color: #f50202; /* لون خلفية افتراضي */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  animation: rainbowBackground 7s infinite; /* تعيين الرسم المتحرك */
+}
 
-  .container {
-    width: 100%;
-    max-width: 1200px;
-    background-color: #222;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    overflow-y: auto;
-  }
 
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-  }
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
 
-  .title {
-    font-size: 24px;
-    font-weight: bold;
-    color: #b76e79;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  }
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #b76e79;
+  text-shadow: 2px 2px 4px rgba(255, 0, 0, 0.5);
+}
 
-  .subtitle {
-    font-size: 18px;
-    color: #fff;
-  }
+.subtitle {
+  font-size: 18px;
+  color: #fff;
+}
 
-  .products {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
-  .product {
-    background-color: #333;
-    padding: 20px;
-    margin: 10px;
-    width: calc(33.33% - 40px);
-    text-align: center;
-    border-radius: 10px;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-  }
+.product {
+  background-color: #333;
+  padding: 20px;
+  margin: 10px;
+  width: calc(33.33% - 40px);
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(255, 251, 251, 0.3);
+}
 
-  .product img {
-    width: 100%;
-    max-height: 150px;
-    object-fit: cover;
-    border-radius: 10px;
-  }
+@keyframes rainbowBackground {
+  0% { background-color: red; }
+  14.28% { background-color: orange; }
+  28.57% { background-color: yellow; }
+  42.85% { background-color: green; }
+  57.14% { background-color: blue; }
+  71.42% { background-color: indigo; }
+  85.71% { background-color: violet; }
+  100% { background-color: red; }
+}
 
-  .product-title {
-    font-size: 16px;
-    font-weight: bold;
-    color: #fff;
-    margin: 10px 0;
-  }
-
-  .product-price {
-    font-size: 14px;
-    color: #00ff00;
-    font-weight: bold;
-  }
-
-  .add-to-cart-button {
-    background-color: #b76e79;
-    color: #fff;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: background-color 0.3s ease;
-  }
-
-  .add-to-cart-button:hover {
-    background-color: #8c3d4f;
-  }
-
-  .cart-icon {
-    position: relative;
-    cursor: pointer;
-  }
-
-  .cart-icon::after {
-    content: attr(data-count);
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    background: red;
-    color: white;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 20px;
-  }
-
-  @media (max-width: 768px) {
-    .product {
-      width: calc(50% - 40px);
-    }
-  }
-
-  @media (max-width: 480px) {
-    .product {
-      width: calc(100% - 40px);
-    }
-  }
-</style>
-</head>
+      .product img {
+        width: 80%;
+        max-height: 300px;
+        object-fit: bold;
+        border-radius: 10px;
+      }
+    
+      .product-title {
+        font-size: 16px;
+        font-weight: bold;
+        color: #fff;
+        margin: 10px 0;
+      }
+    
+      .product-description {
+        font-size: 14px;
+        color: #ccc;
+        margin-bottom: 10px;
+      }
+    
+      .product-price {
+        font-size: 14px;
+        color: #00ff00;
+        font-weight: bold;
+      }
+    
+      .add-to-cart-button {
+        background-color: #b76e79;
+        color: #fff;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background-color 0.3s ease;
+      }
+    
+      .add-to-cart-button:hover {
+        background-color: #8c3d4f;
+      }
+    
+      .cart-icon {
+        position: relative;
+        cursor: pointer;
+      }
+    
+      .cart-icon::after {
+        content: attr(data-count);
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        background: red;
+        color: white;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 20px;
+      }
+    
+      @media (max-width: 768px) {
+        .product {
+          width: calc(50% - 40px);
+        }
+      }
+    
+      @media (max-width: 480px) {
+        .product {
+          width: calc(100% - 40px);
+        }
+      }
+    </style>
+    </head>
+    
 <body>
 <div class="container">
   <div class="header">
@@ -148,6 +168,7 @@
     <div class="product">
       <img src="https://i.ibb.co/98VzXWK/product-2.jpg" alt="منتج 1">
       <div class="product-title">الدنكلي</div>
+      <div class="product-description">قحروطي</div>
       <div class="product-price">السعر: $7.90</div>
       <button class="add-to-cart-button" onclick="addToCart('الدنكلي', 7.90)">أضف إلى السلة</button>
     </div>
@@ -155,6 +176,7 @@
     <div class="product">
       <img src="https://i.ibb.co/XjbNSp7/product-1.jpg" alt="منتج 2">
       <div class="product-title">ابو طرشمان</div>
+      <div class="product-description">مطيع محنك</div>
       <div class="product-price">السعر: $4.50</div>
       <button class="add-to-cart-button" onclick="addToCart('ابو طرشمان', 4.50)">أضف إلى السلة</button>
     </div>
@@ -162,13 +184,15 @@
     <div class="product">
       <img src="https://i.ibb.co/zG2YpBF/product3.jpg" alt="منتج 3">
       <div class="product-title">الخازوق</div>
-      <div class="product-price">السعر: $6.00</div>
-      <button class="add-to-cart-button" onclick="addToCart('الخازوق', 6.00)">أضف إلى السلة</button>
+      <div class="product-description">يتحمل العنف</div>
+      <div class="product-price">السعر: $35.00</div>
+      <button class="add-to-cart-button" onclick="addToCart('الخازوق', 35.00)">أضف إلى السلة</button>
     </div>
 
     <div class="product">
       <img src="https://i.ibb.co/HC4FV76/product4.jpg" alt="منتج 4">
       <div class="product-title">زنجيقا</div>
+      <div class="product-description">فزعه عبند</div>
       <div class="product-price">السعر: $4.75</div>
       <button class="add-to-cart-button" onclick="addToCart('زنجيقا', 4.75)">أضف إلى السلة</button>
     </div>
@@ -176,6 +200,7 @@
     <div class="product">
       <img src="https://i.ibb.co/Srqfby1/product5.jpg" alt="منتج 5">
       <div class="product-title">البولبول</div>
+      <div class="product-description">للاستمتاع +18</div>
       <div class="product-price">السعر: $2.90</div>
       <button class="add-to-cart-button" onclick="addToCart('البولبول', 2.90)">أضف إلى السلة</button>
     </div>
@@ -183,6 +208,7 @@
     <div class="product">
       <img src="https://i.ibb.co/mR6SPqk/product6.jpg" alt="منتج 6">
       <div class="product-title">كعبول</div>
+      <div class="product-description">مامنه فايده</div>
       <div class="product-price">السعر: $6.99</div>
       <button class="add-to-cart-button" onclick="addToCart('كعبول', 6.99)">أضف إلى السلة</button>
     </div>
@@ -190,9 +216,40 @@
     <div class="product">
       <img src="https://i.ibb.co/yRpnYp2/product7.jpg" alt="منتج 7">
       <div class="product-title">ورياليلي</div>
+      <div class="product-description">طباخ</div>
       <div class="product-price">السعر: $3.45</div>
       <button class="add-to-cart-button" onclick="addToCart('ورياليلي', 3.45)">أضف إلى السلة</button>
     </div>
+
+    <!-- المنتجات الجديدة -->
+    <div class="product">
+      <img src="https://i.ibb.co/wh1cC7R/product8.jpg" alt="منتج 8">
+      <div class="product-title">الخورمم</div>
+      <div class="product-description">من الاسم تعرف</div>
+      <div class="product-price">السعر: $3.90</div>
+      <button class="add-to-cart-button" onclick="addToCart('الخورمم ', 3.90)">أضف إلى السلة</button>
+    </div>
+
+    <div class="product">
+      <img src="https://i.ibb.co/SX8qTM0/product9.jpg" alt="منتج 9">
+      <div class="product-title">بنيري</div>
+      <div class="product-description">لايغرك لونه تراه اسود </div>
+      <div class="product-price">السعر: $5</div>
+      <button class="add-to-cart-button" onclick="addToCart('بنيري', 5)">أضف إلى السلة</button>
+    </div>
+
+    <div class="product">
+      <img src="https://i.ibb.co/CB8tK2r/product10.jpg" alt="منتج 10" style="width: 80%; height: 300px; object-fit: contain; border-radius: 10px;">
+      <div class="product-title">كاجمغلي</div>
+      <div class="product-description">لا انصح بالشراء</div>
+      <div class="product-price">السعر: $1</div>
+      <button class="add-to-cart-button" onclick="addToCart('كاجمغلي', )">أضف إلى السلة</button>
+    </div>
+    
+    
+    
+    <!-- نهاية المنتجات الجديدة -->
+
   </div>
 </div>
 
