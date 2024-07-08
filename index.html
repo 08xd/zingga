@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>متجر الزنج الأرخص</title>
+<title>متجر الزنج الأرخص - الصفحة الرئيسية</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
 
@@ -147,49 +147,49 @@
     <div class="product">
       <img src="https://i.ibb.co/98VzXWK/product-2.jpg" alt="منتج 1">
       <div class="product-title">الدنكلي</div>
-      <div class="product-price">السعر: $7,90</div>
+      <div class="product-price">السعر: $7.90</div>
       <button class="add-to-cart-button" onclick="addToCart('الدنكلي', 7.90)">أضف إلى السلة</button>
     </div>
 
     <div class="product">
       <img src="https://i.ibb.co/XjbNSp7/product-1.jpg" alt="منتج 2">
       <div class="product-title">ابو طرشمان</div>
-      <div class="product-price">السعر: $4,50</div>
+      <div class="product-price">السعر: $4.50</div>
       <button class="add-to-cart-button" onclick="addToCart('ابو طرشمان', 4.50)">أضف إلى السلة</button>
     </div>
 
     <div class="product">
       <img src="https://i.ibb.co/zG2YpBF/product3.jpg" alt="منتج 3">
       <div class="product-title">الخازوق</div>
-      <div class="product-price">السعر: 6</div>
+      <div class="product-price">السعر: $6.00</div>
       <button class="add-to-cart-button" onclick="addToCart('الخازوق', 6.00)">أضف إلى السلة</button>
     </div>
 
     <div class="product">
       <img src="https://i.ibb.co/HC4FV76/product4.jpg" alt="منتج 4">
       <div class="product-title">زنجيقا</div>
-      <div class="product-price">السعر: $4,75</div>
+      <div class="product-price">السعر: $4.75</div>
       <button class="add-to-cart-button" onclick="addToCart('زنجيقا', 4.75)">أضف إلى السلة</button>
     </div>
 
     <div class="product">
       <img src="https://i.ibb.co/Srqfby1/product5.jpg" alt="منتج 5">
       <div class="product-title">البولبول</div>
-      <div class="product-price">السعر: $2,90</div>
+      <div class="product-price">السعر: $2.90</div>
       <button class="add-to-cart-button" onclick="addToCart('البولبول', 2.90)">أضف إلى السلة</button>
     </div>
 
     <div class="product">
       <img src="https://i.ibb.co/mR6SPqk/product6.jpg" alt="منتج 6">
       <div class="product-title">كعبول</div>
-      <div class="product-price">السعر: $6,99</div>
+      <div class="product-price">السعر: $6.99</div>
       <button class="add-to-cart-button" onclick="addToCart('كعبول', 6.99)">أضف إلى السلة</button>
     </div>
 
     <div class="product">
       <img src="https://i.ibb.co/yRpnYp2/product7.jpg" alt="منتج 7">
       <div class="product-title">ورياليلي</div>
-      <div class="product-price">السعر: $3,45</div>
+      <div class="product-price">السعر: $3.45</div>
       <button class="add-to-cart-button" onclick="addToCart('ورياليلي', 3.45)">أضف إلى السلة</button>
     </div>
   </div>
@@ -202,6 +202,7 @@
     cart.push({ name: productName, price: productPrice });
     updateCartIcon();
     localStorage.setItem('cart', JSON.stringify(cart));
+    alert(productName + " تمت إضافته إلى السلة.");
   }
 
   function updateCartIcon() {
