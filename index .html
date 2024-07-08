@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>سلة التسوق</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
+
+  body {
+    font-family: 'Amiri', serif;
+    background-color: #000;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    background-color: #222;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #b76e79;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .subtitle {
+    font-size: 18px;
+    color: #fff;
+  }
+
+  .cart-items {
+    list-style: none;
+    padding: 0;
+  }
+
+  .cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #333;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .cart-item div {
+    flex: 1;
+  }
+
+  .cart-item button {
+    background-color: #b76e79;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .cart-item button:hover {
+    background-color: #8c3d4f;
+  }
+
+  .total-price {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: right;
+    margin-top: 20px;
+  }
+
+  .confirm-order-button {
+    display: block;
+    width: 100%;
+    background-color: #b76e79;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+  }
+
+  .confirm-order-button:hover {
+    background-color: #8c3d4f;
+  }
+
+  .cancel-button {
+    display: block;
+    width: 100%;
+    background-color: #b76e79;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .cancel-button:hover {
+    background-color: #8c3d4f;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="title">سلة التسوق</div>
+  </div>
+
+  <ul class="cart-items" id="cart-items">
+    <!-- سيتم تعبئة عناصر السلة هنا بواسطة JavaScript -->
+  </ul>
+
+  <div class="total-price" id="total-price">المجموع: $0.00</div>
+  <button class="confirm-order-button" onclick="confirmOrder()">تأكيد الطلب</button>
+  <button class="cancel-button" onclick="clearCart()">إلغاء العبد</button>
+</div>
+
+<script>
+  let cart = [];
+
+  function loadCart() {
+    const savedCart = JSON.parse(localStorage.getItem('cart'));
+    if (savedCart) {
+      cart = savedCart;
+      displayCartItems();
+      calculateTotalPrice();
+    }
+  }
+
+  function displayCartItems() {
+    const cartItemsContainer = document.getElementById('cart-items');
+    cartItemsContainer.innerHTML = '';
+    cart.forEach((item, index) => {
+      const cartItem = document.createElement('li');
+      cartItem.classList.add('cart-item');
+      cartItem.innerHTML = `
+        <div>${item.name}</div>
+        <div>$${item.price.toFixed(2)}</div>
+        <button onclick="removeFromCart(${index})">إزالة</button>
+      `;
+      cartItemsContainer.appendChild(cartItem);
+    });
+  }
+
+  function calculateTotalPrice() {
+    const totalPrice = cart.reduce((total, item) => total + item.price, 0);
+    document.getElementById('total-price').textContent = `المجموع: $${totalPrice.toFixed(2)}`;
+  }
+
+  function removeFromCart(index) {
+    cart.splice(index, 1);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    displayCartItems();
+    calculateTotalPrice();
+  }
+
+  function confirmOrder() {
+    const totalPrice = cart.reduce((total, item) => total + item.price, 0);
+    window.location.href = `https://www.paypal.com/paypalme/Mohammedsade?v=1&utm_source=unp&utm_medium=email&utm_campaign=RT000481&utm_unptid=d59827fe-3c6b-11ef-a15c-3cfdfeef78f5&ppid=RT000481&cnac=BH&rsta=ar_EG(ar-BH)&cust=J325GEXX8KX6Y&unptid=d59827fe-3c6b-11ef-a15c-3cfdfeef78f5&calc=46449369ce865&unp_tpcid=ppme-social-business-profile-created&page=main%3Aemail%3ART000481&pgrp=main%3Aemail&e=cl&mchn=em&s=ci&mail=sys&appVersion=1.263&amount=${totalPrice.toFixed(2)}`;
+  }
+
+  function clearCart() {
+    cart = [];
+    localStorage.removeItem('cart');
+    displayCartItems();
+    calculateTotalPrice();
+    alert('تم إلغاء العبد.');
+  }
+
+  document.addEventListener('DOMContentLoaded', loadCart);
+</script>
+</body>
+</html>
